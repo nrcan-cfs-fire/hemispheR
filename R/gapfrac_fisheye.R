@@ -397,6 +397,10 @@ gapfrac_fisheye <- function(img.bw,
     maxVZAmm<-2*sin(maxVZA*pi/180)
     rset<-round(rc*2*sin(VZAbins*pi/180)/maxVZAmm)
   }
+  if (lens == "northform_lens") {
+    VZAbins <- seq(startVZA, endVZA, (endVZA - startVZA)/nrings)
+    rset<-round(rc*(0.9940*(VZAbins * pi/180)+0.1639*(VZAbins*pi/180)^2)-313.5205*(VZAbins*pi/180)^3+50.0517*(VZAbins*pi/180)^4)
+  }
 
   #8 azimuth segments
   nseg=nseg
